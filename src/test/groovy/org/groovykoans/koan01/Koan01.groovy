@@ -55,7 +55,7 @@ class Koan01 extends GroovyTestCase {
         // Create the target string with the ${} mechanism. Remember that ${} can contain method calls too!
         String result
         // ------------ START EDITING HERE ----------------------
-
+        result = "The size of the string '${greeting}' is ${greeting.size()}"
 
         // ------------ STOP EDITING HERE  ----------------------
 
