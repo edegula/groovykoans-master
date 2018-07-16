@@ -100,7 +100,7 @@ class Koan04 extends GroovyTestCase {
 
         // Let's check that we got the same result (you can use the assertX methods)
         // ------------ START EDITING HERE ----------------------
-
+        assert javaResult == groovyResult
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -116,7 +116,7 @@ class Koan04 extends GroovyTestCase {
         // What will monkeyColors contain?
         def expectedMonkeyColors = []
         // ------------ START EDITING HERE ----------------------
-
+        expectedMonkeyColors = ['blue', 'red', 'purple']
 
         // ------------ STOP EDITING HERE  ----------------------
         assert monkeyColors == expectedMonkeyColors
@@ -130,6 +130,8 @@ class Koan04 extends GroovyTestCase {
         def prefix = 'src/test/groovy/org/groovykoans/koan04/'
         // ------------ START EDITING HERE ----------------------
 
+        def file = new File("$prefix/exercise.txt")
+        file.filterLine(filteredResult) {line -> !line.contains('#')}
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -148,7 +150,7 @@ class Koan04 extends GroovyTestCase {
         // http://docs.groovy-lang.org/latest/html/groovy-jdk/java/lang/String.html
         def expectedCount
         // ------------ START EDITING HERE ----------------------
-
+        expectedCount = 3
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -163,7 +165,7 @@ class Koan04 extends GroovyTestCase {
         // What will the value of mysteryList be?
         def expectedMysteryList
         // ------------ START EDITING HERE ----------------------
-
+        expectedMysteryList = ['Baby','Yeah']
 
         // ------------ STOP EDITING HERE  ----------------------
         assert mysteryList == expectedMysteryList
