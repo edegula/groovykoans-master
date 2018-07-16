@@ -41,8 +41,8 @@ class Koan05 extends GroovyTestCase {
         // http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Map.html#each(groovy.lang.Closure)
         def idListResult = []
         // ------------ START EDITING HERE ----------------------
-        idToNameMap.each {
-            idListResult.add(it.key + it.value)
+        idToNameMap.each { key, value ->
+            idListResult.add(key + value)
         }
 
         // ------------ STOP EDITING HERE  ----------------------
@@ -72,9 +72,9 @@ class Koan05 extends GroovyTestCase {
         // http://docs.groovy-lang.org/latest/html/groovy-jdk/java/lang/Object.html#eachWithIndex(groovy.lang.Closure)
         def rangeResult = []
         // ------------ START EDITING HERE ----------------------
-        int i = 1
-        ('a'..'z').each { c ->
-            i++ % 2 == 1 ? rangeResult.add(c) : 'do nothing'
+
+        ('a'..'z').eachWithIndex { c, i ->
+            (i+1) % 2 == 1 ? rangeResult.add(c) : 'do nothing'
         }
 
         // ------------ STOP EDITING HERE  ----------------------
