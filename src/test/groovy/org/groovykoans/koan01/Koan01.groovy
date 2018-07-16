@@ -70,7 +70,7 @@ class Koan01 extends GroovyTestCase {
         // Concatenate the two values of 'right' and 'left' into result to proceed using Groovy syntax
         def result
         // ------------ START EDITING HERE ----------------------
-
+        result = map.get('right') + map.get('left')
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -92,7 +92,7 @@ class Koan01 extends GroovyTestCase {
         // Add the missing item to the Groovy list. Pay attention to the order of the items.
         // Hint: you can use either Java's add(int, String) or Groovy's plus() method.
         // ------------ START EDITING HERE ----------------------
-
+        groovyList.add(1,"Queen")
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -134,7 +134,7 @@ class Koan01 extends GroovyTestCase {
     private String createMessageForUser(UserService userService) {
         def message
         // ------------ START EDITING HERE ----------------------
-
+        message = 'Hello ' + (userService.getLoggedInUser()?.firstName ?: 'Anonymous') + '!'
 
         // ------------ STOP EDITING HERE  ----------------------
 
