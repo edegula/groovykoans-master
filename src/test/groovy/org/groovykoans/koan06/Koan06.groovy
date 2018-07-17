@@ -90,7 +90,19 @@ class Koan06 extends GroovyTestCase {
         // range objects, store all the prime numbers between 200 and 250 in the target variable
         def primesBetween200And250 = []
         // ------------ START EDITING HERE ----------------------
+        (200..250).each { num ->
 
+            // if num is a multiple of 2 then it is not a prime
+            if (num%2 == 0) return false
+
+            // check odd numbers up to the square root of num
+            for (int i = 3; i*i <= num; i+=2) {
+                if (num % i == 0)
+                    return false
+            }
+            primesBetween200And250.add(num)
+            return true
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
         assert primesBetween200And250 == [211, 223, 227, 229, 233, 239, 241]
