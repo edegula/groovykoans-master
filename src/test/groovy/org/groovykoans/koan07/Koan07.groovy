@@ -176,7 +176,13 @@ and can become difficult to maintain"""
         // create the same regular expression to sum the total leftovers, but this time document the regex
         String regexp
         // ------------ START EDITING HERE ----------------------
-
+        regexp = '''(?smx)     # enable extended patterns
+                     (.*?)     # any string put in group
+                     \\s+       # any whitespace
+                     (\\d+)     # any number put in group
+                     \\s+       # any whitespace
+                     (\\d+)     # any number put in group
+                     '''
 
         // ------------ STOP EDITING HERE  ----------------------
         def sum = text.findAll(regexp) { it[3].toInteger() }.sum()
