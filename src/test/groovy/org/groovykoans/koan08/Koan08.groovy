@@ -30,13 +30,13 @@ class Koan08 extends GroovyTestCase {
             // ------------ START EDITING HERE ----------------------
             def result
 
-            switch (input) {                                // groovy switches can handle any switch value
+            switch (input) {                                // groovy switches can handle any switch value (no need to determine the input type)
                 case 1..100:
                     result = input / 2
                     break
                 case ~/.*ee/:                               // ~ pattern operator with a slashy string/regex
                     result = "${input[0..-3]}ey"            // use string interpolation to access input value
-                    break                                   // then get the substring from 0..-3 with negative indices- http://docs.groovy-lang.org/latest/html/documentation/index.html#Collections-Slicingwiththesubscriptoperator
+                    break                                   // then get the substring from 0..-3 (notice the negative index) - http://docs.groovy-lang.org/latest/html/documentation/index.html#Collections-Slicingwiththesubscriptoperator
                 default:
                     result = input
             }
