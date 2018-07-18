@@ -29,26 +29,18 @@ class Koan08 extends GroovyTestCase {
         def magicClosure = { input ->
             // ------------ START EDITING HERE ----------------------
             def result
-            switch (input.class) {
-                case java.lang.Integer:
-                    if ( input >= 1 && input <= 100)
-                        result = input / (double) 2
-                    else
-                        result = input
-                    break
 
-                case java.lang.String:
-                    if( input.lastIndexOf('ee') == input.length() - 2) {
-                        def pattern = /ee$/
-                        result = input.replaceFirst(pattern, 'ey').toString()
-                    } else
-                        result = input
-
+            switch (input) {                                // groovy switches can handle any switch value
+                case 1..100:
+                    result = input / 2
                     break
+                case ~/.*ee/:                               // ~ pattern operator with a slashy string/regex
+                    result = "${input[0..-3]}ey"            // use string interpolation to access input value
+                    break                                   // then get the substring from 0..-3 with negative indices- http://docs.groovy-lang.org/latest/html/documentation/index.html#Collections-Slicingwiththesubscriptoperator
                 default:
                     result = input
             }
-            return result
+            result    // implicit return based on the last statement
             // ------------ STOP EDITING HERE  ----------------------
         }
         [5: 2.5, 'smile': 'smile', 'smilee': 'smiley', 'heehee': 'heehey'].each { key, expectedValue ->
