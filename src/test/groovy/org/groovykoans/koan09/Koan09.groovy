@@ -75,7 +75,8 @@ class Koan09 extends GroovyTestCase {
         // In Java, we only have the 'this' keyword. It returns the current instance. Groovy does exactly the same.
         def expectedThisClassName
         // ------------ START EDITING HERE ----------------------
-
+        // same as Java
+        expectedThisClassName = this.class.name
 
         // ------------ STOP EDITING HERE  ----------------------
         assert this.class.name == expectedThisClassName
@@ -104,8 +105,8 @@ class Koan09 extends GroovyTestCase {
         // Can you figure out what the values for weightOnEarth and weightOnMoon are?
         def expectedWeightOnMoon, expectedWeightOnEarth
         // ------------ START EDITING HERE ----------------------
-
-
+        expectedWeightOnEarth = 10 * new ConstantsOnEarth().gravity
+        expectedWeightOnMoon = 10 * new ConstantsOnMoon().gravity
         // ------------ STOP EDITING HERE  ----------------------
         assert weightOnEarth == expectedWeightOnEarth
         assert weightOnMoon == expectedWeightOnMoon
@@ -114,7 +115,8 @@ class Koan09 extends GroovyTestCase {
         // http://stackoverflow.com/questions/8120949/what-does-delegate-mean-in-groovy/8121750#8121750
         // Create a fake environment using the technique in the link to create a gravity of 6
         // ------------ START EDITING HERE ----------------------
-
+        // assign a map with key gravity.. this replaces the free variable used in the calculateWeight closure
+        calculateWeight.delegate = [gravity:6]
 
         // ------------ STOP EDITING HERE  ----------------------
         def weightOnFakePlanet = calculateWeight(10)
