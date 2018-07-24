@@ -160,7 +160,7 @@ class Koan09 extends GroovyTestCase {
 
     void test05_AddMethodsToExistingObjects() {
         // Finally, we can add methods to existing classes.
-        // Have a look at this: http://mrhaki.blogspot.com/2009/12/groovy-goodness-adding-or-overriding.html
+        // Have a look at this: http://mrhaki.blogspot.com/2009/12/groovy-goodnjess-adding-or-overriding.html
 
         // Using the idea from http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html,
         // add a fizzBuzz() method to Integer such that:
@@ -170,7 +170,16 @@ class Koan09 extends GroovyTestCase {
         //   - otherwise, return the number itself (as a String)
 
         // ------------ START EDITING HERE ----------------------
-
+        Integer.metaClass.fizzBuzz << {
+            if (delegate % 5 == 0 && delegate % 3 == 0)
+                'FizzBuzz'
+            else if (delegate % 5 == 0)
+                'Buzz'
+            else if (delegate % 3 == 0)
+                'Fizz'
+            else
+                delegate.toString()
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
         def fizzBuzzes = (1..15).collect { it.fizzBuzz() }
