@@ -104,7 +104,16 @@ class Koan10 extends GroovyTestCase {
         // Using MarkupBuilder, create the above html as String
         def html
         // ------------ START EDITING HERE ----------------------
+        def writer = new StringWriter()
+        def xml = new MarkupBuilder(writer)
 
+        xml.html() {
+            body() {
+                h1('title')
+            }
+        }
+
+        html = writer.toString()
 
         // ------------ STOP EDITING HERE  ----------------------
         assert formatXml(html) == formatXml("<html><body><h1>title</h1></body></html>")
@@ -121,7 +130,19 @@ class Koan10 extends GroovyTestCase {
 
         String convertedXml
         // ------------ START EDITING HERE ----------------------
+        def prefix = 'src/test/groovy/org/groovykoans/koan10/'
+        def movieCatalog = new XmlSlurper().parse(new File("$prefix/movies.xml"))
 
+        def writer = new StringWriter()
+        def xml = new MarkupBuilder(writer)
+
+        xml.movies() {
+            movieCatalog.movie.each {m ->
+                movie(id:m.@id,title:m.title.text(),year:m.year.text())
+            }
+        }
+
+        convertedXml = writer.toString()
 
         // ------------ STOP EDITING HERE  ----------------------
         def expected = """|<movies>
